@@ -5,6 +5,8 @@
  */
 package edu.progmatic;
 
+import edu.progmatic.children.Gym;
+
 import java.util.*;
 
 /**
@@ -15,9 +17,18 @@ public class GezaBa {
 
     private List<ChildWithPos> children = new ArrayList<>();
     private final int lengthOfGym = 10;
-    private final int maxClaps = 100;
+    private final int maxClaps = 10000;
     private int clapNr = 0;
     private static final int DOING_PULLUP = -1;
+
+    public GezaBa(Gym gym) {
+        this.children=gym.getChildren();
+        startGame();
+        for (int i = 0; i < 10000; i++) {
+            playGame();
+        }
+        printResults();
+    }
 
     public void playGame() {
         while (!isFinished()) {

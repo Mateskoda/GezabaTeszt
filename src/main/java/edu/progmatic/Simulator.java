@@ -10,6 +10,10 @@ package edu.progmatic;
 import edu.progmatic.children.DullChild;
 import edu.progmatic.children.RandomChild;
 import edu.progmatic.children.SmartRandomChild;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,40 +24,32 @@ import java.util.List;
  * @author peti
  */
 public class Simulator {
-    
-    private static final List<Class<? extends Child>> CLASSES = new ArrayList<>();
-    private static final GezaBa gb = new GezaBa();
+    private static final List<Class<? extends Child>> CLASSES = new ArrayList();
     int a = 0;
-    
-    static{
-        CLASSES.add(DullChild.class);
-        CLASSES.add(RandomChild.class);
-        CLASSES.add(SmartRandomChild.class);
+//    @Autowired
+//    private static ApplicationContext context = new AnnotationConfigApplicationContext();
+
+    public Simulator() {
+    }
+
+//    public class A implements ApplicationContextAware {
+//        private ApplicationContext context;
+//        public void setApplicationContext(ApplicationContext context) {
+//            this.context = context;
+//        }
+//    }
+
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(
+                edu.progmatic.children.SpringConfig.class);
+
+        GezaBa gb = context.getBean("gezaBaWithOneDullStudent", GezaBa.class);
+//        GezaBa gb2 = (GezaBa)context.getBean("gezaBaWithTwoDullStudents", GezaBa.class);
+//        GezaBa gb3 = (GezaBa)context.getBean("gezaBaWithOneDullOneRandom", GezaBa.class);
+//        GezaBa gb4 = (GezaBa)context.getBean("gezaBaWithOneRandom", GezaBa.class);
 
     }
-    
-    public static void main(String[] args) {
-        
-        try {
-            Logger.doLog = false;
-            addChildren(10);
-            gb.startGame();
-            for (int i = 0; i < 10000; i++) {
-                gb.playGame();
-            }
-            gb.printResults();
-        } catch (Exception ex) {
-           ex.printStackTrace();
-        }
-        
-    }
-    
-    private static void addChildren(int nrOfInstancesPerClass) throws InstantiationException, IllegalAccessException {
-        for (Class<? extends Child> classe : CLASSES) {
-            for(int i=0; i<nrOfInstancesPerClass; i++){
-                Child ch = classe.newInstance();
-                gb.addChild(ch);
-            }          
-        }
-    }
 }
+
+
+
