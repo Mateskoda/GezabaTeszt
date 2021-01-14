@@ -24,7 +24,7 @@ public class GezaBa {
     public GezaBa(Gym gym) {
         this.children=gym.getChildren();
         startGame();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
             playGame();
         }
         printResults();
@@ -94,6 +94,10 @@ public class GezaBa {
             Logger.log("One round is finished");
         }
         return finished;
+    }
+
+    public List<ChildWithPos> getChildren() {
+        return children;
     }
 
     public void printResults() {

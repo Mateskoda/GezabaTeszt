@@ -27,6 +27,29 @@ public class GezaBaTest {
 
     @org.junit.jupiter.api.Test
     void startGame() {
+        GezaBa gb = context.getBean("gezaBaWithOneRandom",GezaBa.class);
+//    gb.startGame();
+//    Map<String,Integer> mapOfWinners =new HashMap<>();
+//        for (int i = 0; i <100 ; i++) {
+//            gb.playGame();
+//        }
+//        gb.printResults();
+        assertEquals(1,gb.getChildren().size());
+
+        GezaBa gb2 = context.getBean("gezaBaWithNoOne",GezaBa.class);
+//        gb2.startGame();
+//    Map<String,Integer> mapOfWinners =new HashMap<>();
+//        for (int i = 0; i <1 ; i++) {
+//            gb2.playGame();
+//        }
+//        gb2.printResults();
+        assertEquals(true,gb2.getChildren().isEmpty());
+
+    }
+
+
+    @org.junit.jupiter.api.Test
+    void printResults() {
 //        GezaBa gb = context.getBean("gezaBaWithOneRandom",GezaBa.class);
 //    gb.startGame();
 //    Map<String,Integer> mapOfWinners =new HashMap<>();
@@ -34,21 +57,7 @@ public class GezaBaTest {
 //            gb.playGame();
 //        }
 //        gb.printResults();
-
-        GezaBa gb2 = context.getBean("gezaBaWithNoOne",GezaBa.class);
-        gb2.startGame();
-//    Map<String,Integer> mapOfWinners =new HashMap<>();
-        for (int i = 0; i <1 ; i++) {
-            gb2.playGame();
-        }
-        gb2.printResults();
-    }
-
-
-    @org.junit.jupiter.api.Test
-    void printResults() {
-
-        Map<String, Integer> mapOfWinners = new HashMap<>();
+//        Map<String, Integer> mapOfWinners = new HashMap<>();
 //        for (ChildWithPos cp : children) {
 //            final String name = cp.getChild().getClass().getName();
 //            System.out.println("Child " + name + " won " + cp.getNrOfWins() + " times");

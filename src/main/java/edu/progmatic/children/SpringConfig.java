@@ -53,18 +53,18 @@ public class SpringConfig {
 //        gym.addChild(rc);
 //        return gym;
 //    }
-    @Bean
-    public GezaBa gezaBaWithOneRandom() {
-        return new GezaBa(this.gymWithOneRandom());
-    }
-
-    @Bean
-    public Gym gymWithOneRandom() {
-        Gym gym = new Gym();
-        RandomChild rc = new RandomChild();
-        gym.addChild(rc);
-        return gym;
-    }
+//    @Bean
+//    public GezaBa gezaBaWithOneRandom() {
+//        return new GezaBa(this.gymWithOneRandom());
+//    }
+//
+//    @Bean
+//    public Gym gymWithOneRandom() {
+//        Gym gym = new Gym();
+//        RandomChild rc = new RandomChild();
+//        gym.addChild(rc);
+//        return gym;
+//    }
 }
 
 
