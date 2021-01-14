@@ -59,10 +59,10 @@ public class GezaBa {
         }
     }
 
-    public void addChild(Child ch) {
-        ChildWithPos cp = new ChildWithPos(ch);
-        children.add(cp);
-    }
+//    public void addChild(Child ch) {
+//        ChildWithPos cp = new ChildWithPos(ch);
+//        children.add(cp);
+//    }
 
     public void startGame() {
         for (int i = 0; i < children.size(); i++) {
@@ -104,7 +104,7 @@ public class GezaBa {
         Map<String, Integer> mapOfWinners = new HashMap<>();
         for (ChildWithPos cp : children) {
             final String name = cp.getChild().getClass().getName();
-            System.out.println("Child " + name + " won " + cp.getNrOfWins() + " times");
+//            System.out.println("Child " + name + " won " + cp.getNrOfWins() + " times");
             if (cp.getNrOfWins() > 0) {
                 mapOfWinners.putIfAbsent(name, 0);
                 mapOfWinners.put(name, mapOfWinners.get(name) + cp.getNrOfWins());
